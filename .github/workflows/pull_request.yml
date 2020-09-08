@@ -1,0 +1,16 @@
+name: build PR
+
+on: pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-16.04
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.x'
+      - run: dotnet build
